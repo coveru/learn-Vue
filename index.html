@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .xzx {
+            background: blue;
+            height: 500px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dataApp">
+
+        {{date | formatDate(123,456)}} <br> <!-- |管道符后面接的是过滤器的名字-->
+
+        <!--指令事件 -->
+        <span v-text="apple"></span><br>
+        <!-- v-html-->
+        {{banana}}<br>
+        <span v-text="banana"></span><br>
+        <span v-html="banana"></span><br>
+        <!-- v-bind 绑定活的属性-->
+        <div :class="className">hahaha</div><br>
+        <!-- v-on绑定监听事件-->
+        <button @click="addOne">{{initNumber}}</button>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+
+        var plusDate = function (value) {
+            return value < 10 ? '0' + value : value
+        }
+        //需求：在页面中实时显示当前时间
+        var app = new Vue({
+            el: '#dataApp',
+            data: {
+                date: new Date(),
+                apple: '苹果',
+                banana: '<span style="color:yellow">香蕉</span>',
+                className: 'xzx',
+                initNumber:0
+            },
+
+            filters: {
+                formatDate: function (value, a, b) {
+                    var date = new Date()
+                    var year = date.getFullYear()
+                    var month = plusDate(date.getMonth() + 1)
+                    var day = plusDate(date.getDate())
+                    var hours = plusDate(date.getHours())
+                    var min = plusDate(date.getMinutes())
+                    var second = plusDate(date.getSeconds())
+                    return year + '-' + month + '-' + day + ' ' + hours + ':' + min + ':' + second
+                        + a + b
+                }
+
+            },
+            mounted: function () {
+                var x = this //this代表的就是vue实例本身
+                this.timer = setInterval(function () {
+                    x.date = new Date()
+                }, 500)
+            },
+            beforeDestroy: function () {
+                if (this.timer) {
+                    clearInterval(this.timer)
+                }
+            },
+            methods:{
+                addOne:function(){
+                  return this.initNumber +=1
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
