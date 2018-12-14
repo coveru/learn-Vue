@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+      .divStyle{
+        background: red;
+        width: 100px;
+        height: 100px;
+      }
+      .borderStyle{
+          border:10px solid purple;
+      }
+      .buttonBg{
+          background-color: aquamarine;
+      }
+      .buttonBlue{
+          background-color: blue;
+      }
+      .color{
+        background: red;
+        width: 100px;
+        height: 100px;
+      }
+  </style>
+    <title>v-bind</title>
+</head>
+<body>
+    <div id="app2">
+        <div :class="color"></div> 
+            
+    </div>
+    <div id="app">
+       绑定class对象语法：对象的键是类名，值是布尔值<br>
+       <div :class="{divStyle : isActive,borderStyle:isActive}"></div>
+       <hr>
+
+           <input type="button" value="点我" :class = {buttonBg:isback,buttonBlue:isblue} @click = "changeColor">
+        <hr>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.20/vue.min.js"></script>
+    <script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+          isActive:true,
+          isback:true,
+          isblue:false
+        },
+        methods:{
+            changeColor:function(){
+                this.isback = !this.isback
+                this.isblue = !this.isblue
+            }
+        }
+    })
+   
+    
+    </script>
+</body>
+</html>
