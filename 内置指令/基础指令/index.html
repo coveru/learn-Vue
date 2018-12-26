@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>基本指令</title>
+    <style>
+      [v-cloak]:{
+          display: none;
+      }
+    </style>
+</head>
+<body>
+<hr>
+       v-cloak: 要与display:none 结合使用
+       <div id="app">
+         <p v-cloak>{{msg}}</p>
+         <br>
+         <hr>
+       v-once:     <br>
+       <span v-once>{{oncemsg}}</span>
+           
+
+
+    </div>
+       <hr>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"></script>
+    <script>
+   
+     var app = new Vue({
+         el:'#app',
+         data:{
+             msg:'加油加油！',
+             oncemsg:'好好学习'
+         }
+     })
+
+    </script>
+</body>
+</html>
