@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>列表渲染</title>
+</head>
+<body>
+    <div id="app">
+        v-for的用法：<br>
+        1.遍历多个对象<br>
+        <ul>
+            <li v-for="jsff in jsMethods">{{jsff.name}}</li> 
+        </ul>
+        带索引的写法：括号的第一个变量代表item，第二个变量代表index <br>
+        <ul>
+                <li v-for="(jsff,index) in jsMethods">{{index}}----{{jsff.name}}</li> 
+        </ul>
+      <hr>
+      2.遍历一个对象的多个属性 <br>
+       <span v-for="value in godness">{{value}}</span>
+       <br>
+       拿到 value key index 的写法 v-k-i <br>
+       <div v-for="(value,key,index) in godness">{{index}}---{{key}}--{{value}}</div>
+
+    </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"></script>
+        <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+              jsMethods:[
+                  {name:'自律'},
+                  {name:'坚持'},
+                  {name:'多问'}
+              ],
+            
+              godness:{
+                girl1: '刘亦菲',
+                girl2: '杨幂',
+                girl3: '林志玲'
+               }
+            }
+        })
+        
+        </script>  
+</body>
+</html>
