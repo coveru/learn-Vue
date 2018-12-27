@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>数组更新</title>
+</head>
+<body>
+    <div id="app">
+       <div v-for="stationery in arr">{{stationery}}</div>
+       <button @click="sortArr">点我排序</button>
+       <button @click="reverseArr">点我翻转</button>
+       <button @click="changeArr">改变数组的指定项</button>
+    </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"></script>
+        <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                arr:['book','pen','eraser']
+            },
+            methods:{
+             sortArr:function(){
+                 this.arr.sort(function(a,b){
+                       return a.length - b.length
+                 })
+             },//利用sort方法对数组进行排序
+             reverseArr:function(){
+                 this.arr.reverse()
+             },// reverse方法对数组进行翻转
+             changeArr:function(){
+                 this.arr.splice(index,item)
+             }
+            }
+        })
+        
+        </script>
+</body>
+</html>
