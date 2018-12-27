@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染指令</title>
+</head>
+<body>
+    条件渲染：<br>
+    <div id="app">
+       <p v-if="7>11">{{apple}}</p>
+       <p v-else-if="7<11">{{pear}}</p>
+       <p v-else>{{banana}}</p>
+       <hr>
+     v-if的实例用法：对不想让其复用的标签或者元素加入key即可<br>  
+     需求：点击按钮实现用户名输入框和密码输入框的切换<br>
+     <div v-if="type==='name'"> 
+         用户名：<input type="text" placeholder="请输入用户名" key="name">
+     </div>
+     <div v-else>
+            密码：<input type="text" placeholder="请输入密码" key="psd">
+    </div>
+     <button @click="toggleTyle">切换</button>
+    <hr>
+    v-show: <br>
+    <p v-show="7<a">{{banana}}</p>
+v-if 实时渲染，页面内容显示是就渲染，不显示就移除， v-show 只渲染一次，不显示时也一直存在，只是改变了display为none。
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"></script>
+   <script>
+     
+     var app= new Vue({
+         el:'#app',
+         data:{
+            apple:'apple',
+            banana:'banana',
+            pear:'pear',
+            type:'name',
+            a:11
+         },
+         methods:{
+            toggleTyle:function(){
+                this.type = (this.type==='name' ? 'password' : 'name')
+            }
+         }
+     })
+   
+   </script>  
+</body>
+</html>
