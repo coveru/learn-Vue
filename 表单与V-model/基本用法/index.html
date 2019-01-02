@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>基本用法</title>
+</head>
+<body>
+    <div id="app">
+       v-model 的用法：<br>
+       input 和 textarea 的用法 <br>
+       <input type="text" v-model="xzx"><br>
+       {{xzx}} <br>
+       多行文本输入框：<br>
+       <textarea name="" id="" cols="30" rows="10" v-model="value">你好啊</textarea><br>
+       {{value}} <br>
+       v-model显示的值只与绑定的value相关 与初始插入的值无关，即textarea标签中插入的初始值“你好啊”不会显示
+       <hr>
+       单选框的用法：<br>
+       单个单选框：<input type="radio" name=""  v-bind:checked="danxuan"><br>
+       多个单选框：<br>
+      唱歌： <input type="radio" name="checks" id="" value="唱歌" v-model="checkname"><br>
+      跳舞： <input type="radio" name="checks" id="" value="跳舞" v-model="checkname"><br>
+      运动： <input type="radio" name="checks" id="" value="运动" v-model="checkname"><br>
+      --------现在选中的是:{{checkname}} <br>
+
+      如果是组合使用，就需要v-model来配合value使用，v-model绑定的是选中的单选框的value值
+<br>
+     单个复选框：v-bind:<input type="checkbox" v-bind:checked="danxuan"><br>
+     单个复选框：v-model:<input type="checkbox" v-model="checkname"><br>
+     <hr>
+     多个复选框：<br>
+        唱歌： <input type="checkbox" name="checks" id="" value="唱歌" v-model="checks"><br>
+        跳舞： <input type="checkbox" name="checks" id="" value="跳舞" v-model="checks"><br>
+        运动： <input type="checkbox" name="checks" id="" value="运动" v-model="checks"><br>
+        --------现在选中的是:{{checks}} <br>
+     多个复选框如果是组合使用，就需要用v-model配合value使用，v-model绑定一个数组，与复选框类似
+<hr>
+    单选的下拉框：<br>
+    <select v-model="selected">
+        <option value="唱歌">唱歌</option> <br>
+        <option value="跳舞">跳舞</option> <br>
+        <option value="运动">运动</option> <br>
+    </select>
+    当前选中的是----{{selected}}
+    <hr>
+    多选的下拉框：<br>
+    <select v-model="selectes" multiple>
+        <option value="唱歌">唱歌</option> <br>
+        <option value="跳舞">跳舞</option> <br>
+        <option value="运动">运动</option> <br>
+    </select>
+    当前选中的是----{{selectes}}
+    <hr>
+    下拉框的单选或者多选在组合使用是用v-model配合value使用，v-model一定是绑定在select标签上，初始值可以是'',也可以是[].
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"></script>
+
+    <script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            xzx:'',
+            value:'',
+            danxuan:true,
+            checkname:'',
+            checks:[],
+            selected:'',
+            selectes:''
+        }
+    })
+    </script>
+    
+
+</body>
+</html>
